@@ -1,0 +1,3 @@
+/Users/patrick/Desktop/EEE/Term2/ELEC0007/Other/practice1_pointer/cmake-build-debug/CMakeFiles/practice1_pointer.dir
+/Users/patrick/Desktop/EEE/Term2/ELEC0007/Other/practice1_pointer/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/patrick/Desktop/EEE/Term2/ELEC0007/Other/practice1_pointer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
