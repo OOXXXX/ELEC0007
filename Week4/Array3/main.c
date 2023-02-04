@@ -74,7 +74,7 @@ int main() {
     int choice;    // User's choice.
     char name1[30], name2[30];    // Names of users.
 
-    while (1) {   // Infinite loop
+    while (1) {   // Infinite loop, until user enters 4.
         printf("1) Introduce new user\n");
         printf("2) Introduce social relationship\n");
         printf("3) Print friends' names of a given user\n");

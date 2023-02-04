@@ -13,7 +13,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="843996fc-404c-4891-a1bd-1061908fe0f6" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/Week4/Array3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Week4/Array3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/practice1_pointer" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/cmake-build-debug/practice1_pointer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Other/practice1_pointer/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Other/practice1_pointer/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +55,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2L9dErpVhaU7a5vpWvSohQh9l4D" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,6 +65,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -83,6 +93,7 @@
       <workItem from="1675287124628" duration="1563000" />
       <workItem from="1675288696893" duration="1048000" />
       <workItem from="1675289750946" duration="589000" />
+      <workItem from="1675290343977" duration="2652000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1675287227241</created>
@@ -98,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675289973242</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first commit">
+      <created>1675290477652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675290477652</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +140,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first commit" />
     <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>

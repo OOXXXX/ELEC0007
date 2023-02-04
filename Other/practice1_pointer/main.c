@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!\n");
+    int number = 10;
+    int *p = &number;
+    printf("%p\n", *p);
+    printf("%p\n", p);
+
     return 0;
 }
