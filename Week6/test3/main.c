@@ -11,54 +11,6 @@ typedef struct node {
 
 Node *head = NULL;
 
-void introduce_user();
-void introduce_resolution();
-void remove_user();
-void print_friends();
-void save_to_file();
-void retrieve_from_file();
-
-
-int main() {
-    int choice;
-    while (1) {
-        printf("\nMenu:\n");
-        printf("1. Introduce user\n");
-        printf("2. Introduce new resolution\n");
-        printf("3. Remove user\n");
-        printf("4. Print a given person's friends\n");
-        printf("5. Save to file\n");
-        printf("6. Retrieve data from file\n");
-        printf("7. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-        switch (choice) {
-            case 1:
-                introduce_user();
-                break;
-            case 2:
-                introduce_resolution();
-                break;
-            case 3:
-                remove_user();
-                break;
-            case 4:
-                print_friends();
-                break;
-            case 5:
-                save_to_file();
-                break;
-            case 6:
-                retrieve_from_file();
-                break;
-            case 7:
-                exit(0);
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    }
-}
-
 void introduce_user() {
     Node *temp, *prev, *cur;
     temp = (Node *)malloc(sizeof(Node));
@@ -253,5 +205,45 @@ void retrieve_from_file() {
     }
     fclose(fp);
     printf("Data retrieved from file.\n");
+}
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\nMenu:\n");
+        printf("1. Introduce user\n");
+        printf("2. Introduce new resolution\n");
+        printf("3. Remove user\n");
+        printf("4. Print a given person's friends\n");
+        printf("5. Save to file\n");
+        printf("6. Retrieve data from file\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                introduce_user();
+                break;
+            case 2:
+                introduce_resolution();
+                break;
+            case 3:
+                remove_user();
+                break;
+            case 4:
+                print_friends();
+                break;
+            case 5:
+                save_to_file();
+                break;
+            case 6:
+                retrieve_from_file();
+                break;
+            case 7:
+                exit(0);
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
 }
 
