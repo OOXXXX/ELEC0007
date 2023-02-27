@@ -12,14 +12,13 @@ Person *head = NULL;
 void insertPerson(char name[]);
 void removePerson(char name[]);
 void introduceFriend(char name[], char friend[]);
-void removeFriend(char name[], char friend[]);
 void printFriends(char name[]);
 void saveToFile(char filename[]);
 void retrieveFromFile(char filename[]);
 
 int main() {
     int choice;
-    char name[50], friend[50], filename[100];
+    char name[50], friend[30], filename[100];
 
     while (1) {
         printf("\nMenu:\n");
@@ -146,9 +145,6 @@ void introduceFriend(char name[], char friend[]) {
     }
 }
 
-void removeFriend(char name[], char friend[]) {
-    // implementation omitted for brevity
-}
 
 void printFriends(char name[]) {
     Person *current = head;
