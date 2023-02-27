@@ -21,31 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc2f4778-9776-44ba-b897-203254dfb5fb" name="Changes" comment="add pointer practice1_pointer">
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/Array.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/practice1_pointer" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/practice1_pointer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-767494a03c9c22fa63d2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.cmake/api/v1/reply/index-2023-01-30T14-38-48-0012.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/Array" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/Array" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array3/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array3/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Week4/Array3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week4/Array/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/Array/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +88,7 @@
       <updated>1675290668932</updated>
       <workItem from="1675290670016" duration="12000" />
       <workItem from="1675290715840" duration="2413000" />
-      <workItem from="1675454727619" duration="627000" />
+      <workItem from="1675454727619" duration="1539000" />
     </task>
     <task id="LOCAL-00001" summary="add pointer practice1_pointer">
       <created>1675290759279</created>
