@@ -2,17 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct node {
+struct node {
     char name[50];
     char **friends;
     int num_friends;
     struct node *next;
-} Node;
+};
+typedef struct node Node;
 
 Node *head = NULL;
 
 void introduce_user() {
-    Node *temp, *prev, *cur;
+    Node *temp, *prev, *aft;
     temp = (Node *)malloc(sizeof(Node));
     if (temp == NULL) {
         printf("Out of memory.\n");
@@ -32,13 +33,13 @@ void introduce_user() {
         head = temp;
     } else {
         prev = head;
-        cur = head->next;
-        while (cur != NULL && strcmp(cur->name, temp->name) < 0) {
-            prev = cur;
-            cur = cur->next;
+        aft = head->next;
+        while (aft != NULL && strcmp(aft->name, temp->name) < 0) {
+            prev = aft;
+            aft = aft->next;
         }
         prev->next = temp;
-        temp->next = cur;
+        temp->next = aft;
     }
     printf("%s has been added to the list.\n", temp->name);
 }
@@ -46,14 +47,14 @@ void introduce_user() {
 void introduce_resolution() {
     char name[50], friend_name[50];
     int i, num;
-    Node *cur;
+    Node *aft;
     printf("Enter name of user: ");
     scanf("%s", name);
-    cur = head;
-    while (cur != NULL && strcmp(cur->name, name) != 0) {
-        cur = cur->next;
+    aft = head;
+    while (aft != NULL && strcmp(aft->name, name) != 0) {
+        aft = aft->next;
     }
-    if (cur == NULL) {
+    if (aft == NULL) {
         printf("%s not found in the list.\n", name);
         return;
     }
@@ -62,59 +63,59 @@ void introduce_resolution() {
     for (i = 0; i < num; i++) {
         printf("Enter name of friend %d: ", i + 1);
         scanf("%s", friend_name);
-        cur->friends[i] = (char *)malloc((strlen(friend_name) + 1) * sizeof(char));
-        if (cur->friends[i] == NULL) {
+        aft->friends[i] = (char *)malloc((strlen(friend_name) + 1) * sizeof(char));
+        if (aft->friends[i] == NULL) {
             printf("Out of memory.\n");
             return;
         }
-        strcpy(cur->friends[i], friend_name);
+        strcpy(aft->friends[i], friend_name);
     }
-    cur->num_friends = num;
+    aft->num_friends = num;
     printf("Resolution added for %s.\n", name);
 }
 
 void remove_user() {
     char name[50];
-    Node *prev, *cur;
+    Node *prev, *aft;
     printf("Enter name: ");
     scanf("%s", name);
     prev = NULL;
-    cur = head;
-    while (cur != NULL && strcmp(cur->name, name) != 0) {
-        prev = cur;
-        cur = cur->next;
+    aft = head;
+    while (aft != NULL && strcmp(aft->name, name) != 0) {
+        prev = aft;
+        aft = aft->next;
     }
-    if (cur == NULL) {
-        printf("%s not found in the list.\n", name);
+    if (aft == NULL) {
+        printf("%s not found.\n", name);
         return;
     }
     if (prev == NULL) {
-        head = cur->next;
+        head = aft->next;
     } else {
-        prev->next = cur->next;
+        prev->next = aft->next;
     }
-    printf("%s has been removed from the list.\n", name);
-    free(cur->friends);
-    free(cur);
+    printf("%s has been removed.\n", name);
+    free(aft->friends);
+    free(aft);
 }
 
 void print_friends() {
     char name[50];
     int i;
-    Node *cur;
+    Node *aft;
     printf("Enter name: ");
     scanf("%s", name);
-    cur = head;
-    while (cur != NULL && strcmp(cur->name, name) != 0) {
-        cur = cur->next;
+    aft = head;
+    while (aft != NULL && strcmp(aft->name, name) != 0) {
+        aft = aft->next;
     }
-    if (cur == NULL) {
-        printf("%s not found in the list.\n", name);
+    if (aft == NULL) {
+        printf("%s not found.\n", name);
         return;
     }
     printf("%s's friends: ", name);
-    for (i = 0; i < cur->num_friends; i++) {
-        printf("%s ", cur->friends[i]);
+    for (i = 0; i < aft->num_friends; i++) {
+        printf("%s ", aft->friends[i]);
     }
     printf("\n");
 }
@@ -122,7 +123,7 @@ void print_friends() {
 void save_to_file() {
     char filename[50];
     FILE *fp;
-    Node *cur;
+    Node *aft;
     printf("Enter filename: ");
     scanf("%s", filename);
     fp = fopen(filename, "w");
@@ -130,15 +131,15 @@ void save_to_file() {
         printf("Error opening file.\n");
         return;
     }
-    cur = head;
-    while (cur != NULL) {
-        fprintf(fp, "%s %d\n", cur->name, cur->num_friends);
+    aft = head;
+    while (aft != NULL) {
+        fprintf(fp, "%s %d\n", aft->name, aft->num_friends);
         int i;
-        for (i = 0; i < cur->num_friends; i++) {
-            fprintf(fp, "%s ", cur->friends[i]);
+        for (i = 0; i < aft->num_friends; i++) {
+            fprintf(fp, "%s ", aft->friends[i]);
         }
         fprintf(fp, "\n");
-        cur = cur->next;
+        aft = aft->next;
     }
     fclose(fp);
     printf("Data saved to file.\n");
@@ -148,7 +149,7 @@ void retrieve_from_file() {
     char filename[50], name[50], friend_name[50];
     int i, num_friends;
     FILE *fp;
-    Node *temp, *prev, *cur;
+    Node *temp, *prev, *aft;
     printf("Enter filename: ");
     scanf("%s", filename);
     fp = fopen(filename, "r");
@@ -191,17 +192,17 @@ void retrieve_from_file() {
         temp->num_friends = num_friends;
         temp->next = NULL;
         prev = NULL;
-        cur = head;
-        while (cur != NULL && strcmp(cur->name, name) < 0) {
-            prev = cur;
-            cur = cur->next;
+        aft = head;
+        while (aft != NULL && strcmp(aft->name, name) < 0) {
+            prev = aft;
+            aft = aft->next;
         }
         if (prev == NULL) {
             head = temp;
         } else {
             prev->next = temp;
         }
-        temp->next = cur;
+        temp->next = aft;
     }
     fclose(fp);
     printf("Data retrieved from file.\n");

@@ -21,9 +21,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac95615-84b6-44eb-b418-6447b44f6dd3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Other/practice1_pointer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Other/practice1_pointer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Array/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Array/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Array/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +84,8 @@
       <workItem from="1675289781841" duration="308000" />
       <workItem from="1675454756558" duration="915000" />
       <workItem from="1677109417798" duration="129000" />
+      <workItem from="1677461636029" duration="685000" />
+      <workItem from="1677507039984" duration="16000" />
     </task>
     <servers />
   </component>
