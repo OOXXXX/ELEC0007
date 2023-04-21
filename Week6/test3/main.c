@@ -9,7 +9,6 @@ struct node {
     struct node *next;
 };
 typedef struct node Node;
-
 Node *head = NULL;
 
 void insert_node(Node **head, Node *new_node) {

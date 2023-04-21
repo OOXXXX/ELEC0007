@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Array3"
+			"path" : "test3"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics"
+					"fragment" : "-g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -fcolor-diagnostics"
 				},
 				{
 					"fragment" : "-std=gnu11"
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"id" : "Array3::@6890427a1f51a3e7e1df",
+	"id" : "test3::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -72,8 +72,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "Array3",
-	"nameOnDisk" : "Array3",
+	"name" : "test3",
+	"nameOnDisk" : "test3",
 	"paths" : 
 	{
 		"build" : ".",
