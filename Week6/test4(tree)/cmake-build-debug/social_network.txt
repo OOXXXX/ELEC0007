@@ -1,6 +1,2 @@
-bbb 1 xxx
-bbb 0
-hhh 0
-iii 0
-uuu 0
-xxx 1 bbb
+aaa 1 bbb
+bbb 1 aaa

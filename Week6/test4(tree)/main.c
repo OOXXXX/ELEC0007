@@ -13,15 +13,19 @@ struct user *head = NULL;
 
 struct TreeNode {
     char name[50];
-    char **friends;
-    int num_friends;
     int height;
     struct TreeNode *left;
     struct TreeNode *right;
 };
 typedef struct TreeNode TreeNode;
 
-// Function prototypes
+TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node);
+TreeNode *remove_tree_node(TreeNode *root, const char *name);
+int get_height(TreeNode *node);
+int get_balance(TreeNode *node);
+TreeNode *right_rotate(TreeNode *y);
+TreeNode *left_rotate(TreeNode *x);
+
 void insert_user(struct user **head, char name[]);
 void remove_user(struct user **head, char name[]);
 void insert_friend(struct user **head, char name[], char friend_name[]);
@@ -31,16 +35,25 @@ void retrieve_from_file(struct user **head);
 void print_menu();
 void free_user(struct user *p);
 
-int main(int argc, char *argv[]) {
-    // Check if user wants to use binary trees
-    int use_trees = 0;
-    if (argc > 1 && strcmp(argv[1], "-t") == 0) {
-        use_trees = 1;
+typedef enum { LINKED_LIST, BALANCED_BINARY_TREE } DataStructure;
+DataStructure selected_data_structure = LINKED_LIST; // Default data structure
+
+int main() {
+    int ds_choice;
+    printf("Please choose the data structure to use:\n");
+    printf("1. Linked List\n");
+    printf("2. Binary Tree\n");
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &ds_choice);
+
+    if (ds_choice == 1) {
+        selected_data_structure = LINKED_LIST;
+    } else if (ds_choice == 2) {
+        selected_data_structure = BALANCED_BINARY_TREE;
+    } else {
+        printf("Invalid choice. Using linked list as default.\n");
+        selected_data_structure = LINKED_LIST;
     }
-
-    // Load data from file
-    retrieve_from_file(&head);
-
     // Display menu
     int choice;
     char name[50], friend_name[50];
@@ -88,7 +101,6 @@ int main(int argc, char *argv[]) {
                 printf("Invalid choice.\n");
         }
     } while (choice != 7);
-
     return 0;
 }
 
@@ -147,6 +159,7 @@ void remove_user(struct user **head, char name[]) {
 
 // Insert a friendship between two people
 void insert_friend(struct user **head, char name[], char friend_name[]) {
+
 // Find the users
     struct user *p1 = NULL, *p2 = NULL;
     struct user *current = *head;
@@ -280,3 +293,133 @@ void free_user(struct user *p) {
     free(p->friends);
     free(p);
 }
+
+TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node) {
+    if (root == NULL) {
+        return new_node;
+    }
+    if (strcmp(root->name, new_node->name) > 0) {
+        root->left = insert_tree_node(root->left, new_node);
+    } else if (strcmp(root->name, new_node->name) < 0) {
+        root->right = insert_tree_node(root->right, new_node);
+    } else {
+        return root;
+    }
+    root->height = 1 + get_height(root);
+    int balance = get_balance(root);
+    if (balance > 1 && strcmp(root->left->name, new_node->name) > 0) {
+        return right_rotate(root);
+    }
+    if (balance < -1 && strcmp(root->right->name, new_node->name) < 0) {
+        return left_rotate(root);
+    }
+    if (balance > 1 && strcmp(root->left->name, new_node->name) < 0) {
+        root->left = left_rotate(root->left);
+        return right_rotate(root);
+    }
+    if (balance < -1 && strcmp(root->right->name, new_node->name) > 0) {
+        root->right = right_rotate(root->right);
+        return left_rotate(root);
+    }
+    return root;
+}
+
+TreeNode *remove_tree_node(TreeNode *root, const char *name) {
+    if (root == NULL) {
+        return root;
+    }
+    if (strcmp(root->name, name) > 0) {
+        root->left = remove_tree_node(root->left, name);
+    } else if (strcmp(root->name, name) < 0) {
+        root->right = remove_tree_node(root->right, name);
+    } else {
+        if (root->left == NULL) {
+            TreeNode *temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) {
+            TreeNode *temp = root->left;
+            free(root);
+            return temp;
+        }
+        TreeNode *temp = root->right;
+        while (temp->left != NULL) {
+            temp = temp->left;
+        }
+        strcpy(root->name, temp->name);
+        root->right = remove_tree_node(root->right, temp->name);
+    }
+    if (root == NULL) {
+        return root;
+    }
+    root->height = 1 + get_height(root);
+    int balance = get_balance(root);
+    if (balance > 1 && get_balance(root->left) >= 0) {
+        return right_rotate(root);
+    }
+    if (balance < -1 && get_balance(root->right) <= 0) {
+        return left_rotate(root);
+    }
+    if (balance > 1 && get_balance(root->left) < 0) {
+        root->left = left_rotate(root->left);
+        return right_rotate(root);
+    }
+    if (balance < -1 && get_balance(root->right) > 0) {
+        root->right = right_rotate(root->right);
+        return left_rotate(root);
+    }
+    return root;
+}
+
+int get_height(TreeNode *node) {
+    if (node == NULL) {
+        return 0;
+    }
+    return node->height;
+}
+
+int get_balance(TreeNode *node) {
+    if (node == NULL) {
+        return 0;
+    }
+    return get_height(node->left) - get_height(node->right);
+}
+
+TreeNode *right_rotate(TreeNode *y) {
+    TreeNode *x = y->left;
+    TreeNode *T2 = x->right;
+    x->right = y;
+    y->left = T2;
+    y->height = 1 + get_height(y);
+    x->height = 1 + get_height(x);
+    return x;
+}
+
+TreeNode *left_rotate(TreeNode *x) {
+    TreeNode *y = x->right;
+    TreeNode *T2 = y->left;
+    y->left = x;
+    x->right = T2;
+    x->height = 1 + get_height(x);
+    y->height = 1 + get_height(y);
+    return y;
+}
+
+void print_tree(TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    print_tree(root->left);
+    printf("%s ", root->name);
+    print_tree(root->right);
+}
+
+void free_tree(TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    free_tree(root->left);
+    free_tree(root->right);
+    free(root);
+}
+
