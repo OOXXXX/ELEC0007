@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct node {
+struct node { // Node of the linked list
     char name[50];
     char **friends;
     int num_friends;
@@ -11,10 +11,10 @@ struct node {
 typedef struct node Node;
 Node *head = NULL;
 
-void insert_node(Node **head, Node *new_node) {
+void insert_node(Node **head, Node *new_node) { // Insert a node in the linked list
     Node *prev = NULL;
     Node *aft = *head;
-    while (aft != NULL && strcmp(aft->name, new_node->name) < 0) {
+    while (aft != NULL && strcmp(aft->name, new_node->name) < 0) { // Sort the linked list by name
         prev = aft;
         aft = aft->next;
     }
@@ -27,7 +27,7 @@ void insert_node(Node **head, Node *new_node) {
     }
 }
 
-void remove_node(Node **head, char *name) {
+void remove_node(Node **head, char *name) { // Remove a node from the linked list
     Node *prev = NULL;
     Node *aft = *head;
     while (aft != NULL && strcmp(aft->name, name) != 0) {
@@ -51,7 +51,7 @@ void remove_node(Node **head, char *name) {
     free(aft);
 }
 
-void introduce_user() {
+void introduce_user() { // Introduce a new user
     char name[50];
     printf("Enter name of user: ");
     scanf("%s", name);
@@ -64,12 +64,12 @@ void introduce_user() {
     printf("%s has been added to the list.\n", new_node->name);
 }
 
-void introduce_resolution() {
+void introduce_resolution() { // Introduce a new resolution
     char name[50];
     printf("Enter name of user: ");
     scanf("%s", name);
     Node *temp = head;
-    while (temp != NULL && strcmp(temp->name, name) != 0) {
+    while (temp != NULL && strcmp(temp->name, name) != 0) { // Find the user
         temp = temp->next;
     }
     if (temp == NULL) {
@@ -82,7 +82,7 @@ void introduce_resolution() {
     temp->num_friends = num_friends;
     temp->friends = (char **) malloc(num_friends * sizeof(char *));
     int i;
-    for (i = 0; i < num_friends; i++) {
+    for (i = 0; i < num_friends; i++) { // Introduce the friends
         temp->friends[i] = (char *) malloc(50 * sizeof(char));
         printf("Enter name of friend %d: ", i + 1);
         scanf("%s", temp->friends[i]);
@@ -120,7 +120,7 @@ void print_friends() {
     }
 }
 
-void save_to_file() {
+void save_to_file() { // Save the linked list to a file
     char filename[50];
     printf("Enter filename to save data: ");
     scanf("%s", filename);
@@ -130,7 +130,7 @@ void save_to_file() {
         return;
     }
     Node *temp = head;
-    while (temp != NULL) {
+    while (temp != NULL) { // Write the data to the file
         fprintf(file, "%s %d", temp->name, temp->num_friends);
         int i;
         for (i = 0; i < temp->num_friends; i++) {
@@ -154,7 +154,7 @@ void retrieve_from_file() {
     }
     char name[50];
     int num_friends;
-    while (fscanf(file, "%s %d", name, &num_friends) != EOF) {
+    while (fscanf(file, "%s %d", name, &num_friends) != EOF) { // Read the data from the file
         Node *new_node = (Node *) malloc(sizeof(Node));
         strcpy(new_node->name, name);
         new_node->num_friends = num_friends;
