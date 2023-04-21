@@ -2,26 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Define a structure for a person
-struct person {
+// Define a structure for a user
+struct user {
     char name[50];
-    struct person *next;
+    struct user *next;
     int num_friends;
     char **friends;
 };
+struct user *head = NULL;
+
+struct TreeNode {
+    char name[50];
+    char **friends;
+    int num_friends;
+    int height;
+    struct TreeNode *left;
+    struct TreeNode *right;
+};
+typedef struct TreeNode TreeNode;
 
 // Function prototypes
-void insert_person(struct person **head, char name[]);
-void remove_person(struct person **head, char name[]);
-void insert_friend(struct person **head, char name[], char friend_name[]);
-void print_friends(struct person *head, char name[]);
-void save_to_file(struct person *head);
-void retrieve_from_file(struct person **head);
+void insert_user(struct user **head, char name[]);
+void remove_user(struct user **head, char name[]);
+void insert_friend(struct user **head, char name[], char friend_name[]);
+void print_friends(struct user *head, char name[]);
+void save_to_file(struct user *head);
+void retrieve_from_file(struct user **head);
 void print_menu();
-void free_person(struct person *p);
-
-// Global variables
-struct person *head = NULL;
+void free_user(struct user *p);
 
 int main(int argc, char *argv[]) {
     // Check if user wants to use binary trees
@@ -43,7 +51,7 @@ int main(int argc, char *argv[]) {
             case 1:
                 printf("Enter name: ");
                 scanf("%s", name);
-                insert_person(&head, name);
+                insert_user(&head, name);
                 break;
             case 2:
                 printf("Enter name: ");
@@ -55,7 +63,7 @@ int main(int argc, char *argv[]) {
             case 3:
                 printf("Enter name: ");
                 scanf("%s", name);
-                remove_person(&head, name);
+                remove_user(&head, name);
                 break;
             case 4:
                 printf("Enter name: ");
@@ -69,11 +77,11 @@ int main(int argc, char *argv[]) {
                 retrieve_from_file(&head);
                 break;
             case 7:
-                // Free memory for all persons before exit
+                // Free memory for all users before exit
                 while (head != NULL) {
-                    struct person *p = head;
+                    struct user *p = head;
                     head = head->next;
-                    free_person(p);
+                    free_user(p);
                 }
                 break;
             default:
@@ -84,36 +92,36 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-// Insert a person in alphabetical order by name
-void insert_person(struct person **head, char name[]) {
-    struct person *new_person = (struct person *) malloc(sizeof(struct person));
-    strcpy(new_person->name, name);
-    new_person->num_friends = 0;
-    new_person->friends = NULL;
+// Insert a user in alphabetical order by name
+void insert_user(struct user **head, char name[]) {
+    struct user *new_user = (struct user *) malloc(sizeof(struct user));
+    strcpy(new_user->name, name);
+    new_user->num_friends = 0;
+    new_user->friends = NULL;
 
-    // If the list is empty or new person is less than the first person
+    // If the list is empty or new user is less than the first user
     if (*head == NULL || strcmp((*head)->name, name) > 0) {
-        new_person->next = *head;
-        *head = new_person;
+        new_user->next = *head;
+        *head = new_user;
     }
     else {
-        // Traverse the list to find the correct position for the new person
-        struct person *current = *head;
+        // Traverse the list to find the correct position for the new user
+        struct user *current = *head;
         while (current->next != NULL && strcmp(current->next->name, name) < 0) {
             current = current->next;
         }
-        new_person->next = current->next;
-        current->next = new_person;
+        new_user->next = current->next;
+        current->next = new_user;
     }
 
     printf("Person %s introduced.\n", name);
 }
 
-// Remove a person and their friendships from the list
-void remove_person(struct person **head, char name[]) {
-    // Find the person to remove
-    struct person *current = *head;
-    struct person *prev = NULL;
+// Remove a user and their friendships from the list
+void remove_user(struct user **head, char name[]) {
+    // Find the user to remove
+    struct user *current = *head;
+    struct user *prev = NULL;
     while (current != NULL && strcmp(current->name, name) != 0) {
         prev = current;
         current = current->next;
@@ -123,7 +131,7 @@ void remove_person(struct person **head, char name[]) {
         return;
     }
 
-// Remove the person from the list
+// Remove the user from the list
     if (prev == NULL) {
         *head = current->next;
     }
@@ -133,15 +141,15 @@ void remove_person(struct person **head, char name[]) {
 
     printf("Person %s removed.\n", name);
 
-// Free memory for the person and their friendships
-    free_person(current);
+// Free memory for the user and their friendships
+    free_user(current);
 }
 
 // Insert a friendship between two people
-void insert_friend(struct person **head, char name[], char friend_name[]) {
-// Find the persons
-    struct person *p1 = NULL, *p2 = NULL;
-    struct person *current = *head;
+void insert_friend(struct user **head, char name[], char friend_name[]) {
+// Find the users
+    struct user *p1 = NULL, *p2 = NULL;
+    struct user *current = *head;
     while (current != NULL && (p1 == NULL || p2 == NULL)) {
         if (strcmp(current->name, name) == 0) {
             p1 = current;
@@ -151,7 +159,7 @@ void insert_friend(struct person **head, char name[], char friend_name[]) {
         }
         current = current->next;
     }
-    // If one of the persons was not found, return
+    // If one of the users was not found, return
     if (p1 == NULL) {
         printf("Person %s not found.\n", name);
         return;
@@ -169,7 +177,7 @@ void insert_friend(struct person **head, char name[], char friend_name[]) {
         }
     }
 
-// Add friendship to both persons
+// Add friendship to both users
     p1->num_friends++;
     p1->friends = (char **) realloc(p1->friends, sizeof(char *) * p1->num_friends);
     p1->friends[p1->num_friends - 1] = (char *) malloc(sizeof(char) * 50);
@@ -183,10 +191,9 @@ void insert_friend(struct person **head, char name[], char friend_name[]) {
     printf("%s and %s are now friends.\n", name, friend_name);
 }
 
-// Print the list of friends for a given person
-void print_friends(struct person *head, char name[]) {
-// Find the person
-    struct person *current = head;
+// Print the list of friends for a given user
+void print_friends(struct user *head, char name[]) {
+    struct user *current = head;
     while (current != NULL && strcmp(current->name, name) != 0) {
         current = current->next;
     }
@@ -203,14 +210,14 @@ void print_friends(struct person *head, char name[]) {
     printf("\n");
 }
 
-// Save the list of persons and their friendships to a file
-void save_to_file(struct person *head){
+// Save the list of users and their friendships to a file
+void save_to_file(struct user *head){
     FILE *fp = fopen("social_network.txt", "w");
     if (fp == NULL) {
         printf("Error opening file.\n");
         return;
-    }// Write each person and their friends to file
-    struct person *current = head;
+    }// Write each user and their friends to file
+    struct user *current = head;
     while (current != NULL) {
         fprintf(fp, "%s %d", current->name, current->num_friends);
         for (int i = 0; i < current->num_friends; i++) {
@@ -224,24 +231,24 @@ void save_to_file(struct person *head){
     printf("Data saved to file.\n");
 }
 
-// Load the list of persons and their friendships from a file
-void retrieve_from_file(struct person **head) {
-// Free memory for all persons currently in the list
+// Load the list of users and their friendships from a file
+void retrieve_from_file(struct user **head) {
+// Free memory for all users currently in the list
     while (*head != NULL) {
-        struct person *p = *head;
+        struct user *p = *head;
         *head = (*head)->next;
-        free_person(p);
+        free_user(p);
     }FILE *fp = fopen("social_network.txt", "r");
     if (fp == NULL) {
         printf("No previous data found.\n");
         return;
     }
 
-// Read each person and their friends from file and insert into list
+// Read each user and their friends from file and insert into list
     char name[50], friend_name[50];
     int num_friends;
     while (fscanf(fp, "%s %d", name, &num_friends) != EOF) {
-        insert_person(head, name);
+        insert_user(head, name);
         for (int i = 0; i < num_friends; i++) {
             fscanf(fp, "%s", friend_name);
             insert_friend(head, name, friend_name);
@@ -249,24 +256,24 @@ void retrieve_from_file(struct person **head) {
     }
 
     fclose(fp);
-    printf("Data retrieved from file.\n");
+    printf("Data retrieved.\n");
 }
 
 // Print the menu options for the user
 void print_menu() {
-    printf("\nSocial Network Application\n");
+    printf("\nMenu:\n");
     printf("1. Introduce user\n");
     printf("2. Introduce new relationship\n");
     printf("3. Remove user\n");
-    printf("4. Print a given person's friends\n");
+    printf("4. Print a given user's friends\n");
     printf("5. Save to file\n");
     printf("6. Retrieve data from file\n");
     printf("7. Exit\n");
     printf("Enter your choice: ");
 }
 
-// Free memory for a person and their friendships
-void free_person(struct person *p) {
+// Free memory for a user and their friendships
+void free_user(struct user *p) {
     for (int i = 0; i < p->num_friends; i++) {
         free(p->friends[i]);
     }
