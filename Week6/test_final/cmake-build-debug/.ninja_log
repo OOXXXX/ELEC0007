@@ -1,0 +1,12 @@
+# ninja log v5
+0	42	1682195844919577661	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+0	31	1682195976034198979	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+0	30	1682196051315967067	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+0	30	1682196663811589781	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+30	62	1682196663844512748	test_final	9a3385bbd6b9feda
+0	29	1682197087923840686	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+29	62	1682197087956979194	test_final	9a3385bbd6b9feda
+0	31	1682197189746412566	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+31	64	1682197189780261157	test_final	9a3385bbd6b9feda
+1	45	1682197553445893984	CMakeFiles/test_final.dir/main.c.o	9d66b4ae8911b22e
+45	81	1682197553481979360	test_final	9a3385bbd6b9feda

@@ -11,6 +11,7 @@ struct user {
 };
 struct user *head = NULL;
 
+// Define a structure for a tree node
 struct TreeNode {
     char name[50];
     int height;
@@ -19,6 +20,7 @@ struct TreeNode {
 };
 typedef struct TreeNode TreeNode;
 
+// Function prototypes
 void insert_user(struct user **head, char name[]);
 void remove_user(struct user **head, char name[]);
 void insert_friend(struct user **head, char name[], char friend_name[]);
@@ -28,6 +30,7 @@ void retrieve_from_file(struct user **head);
 void print_menu();
 void free_user(struct user *p);
 
+// Binary tree functions
 TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node);
 TreeNode *remove_tree_node(TreeNode *root, const char *name);
 int get_height(TreeNode *node);
@@ -35,15 +38,17 @@ int get_balance(TreeNode *node);
 TreeNode *right_rotate(TreeNode *y);
 TreeNode *left_rotate(TreeNode *x);
 
+// Global variable to store the selected data structure
 typedef enum { LINKED_LIST, BALANCED_BINARY_TREE } DataStructure;
 DataStructure selected_data_structure = LINKED_LIST; // Default data structure
 
 int main() {
+    // Choose data structure
     int ds_choice;
     printf("Please choose the data structure to use:\n");
     printf("1. Linked List\n");
     printf("2. Binary Tree\n");
-    printf("Enter your choice (1 or 2): ");
+    printf("Enter choice: ");
     scanf("%d", &ds_choice);
 
     if (ds_choice == 1) {
@@ -64,14 +69,14 @@ int main() {
             case 1:
                 printf("Enter name: ");
                 scanf("%s", name);
-                insert_user(&head, name);
+                insert_user(&head, name); // Insert user in alphabetical order
                 break;
             case 2:
                 printf("Enter name: ");
                 scanf("%s", name);
                 printf("Enter friend's name: ");
                 scanf("%s", friend_name);
-                insert_friend(&head, name, friend_name);
+                insert_friend(&head, name, friend_name); // Insert friendship
                 break;
             case 3:
                 printf("Enter name: ");
@@ -117,7 +122,7 @@ void insert_user(struct user **head, char name[]) {
         *head = new_user;
     }
     else {
-        // Traverse the list to find the correct position for the new user
+        // Find the correct position for the new user in list
         struct user *current = *head;
         while (current->next != NULL && strcmp(current->next->name, name) < 0) {
             current = current->next;
@@ -294,6 +299,7 @@ void free_user(struct user *p) {
     free(p);
 }
 
+// Insert a new node into the tree
 TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node) {
     if (root == NULL) {
         return new_node;
@@ -324,6 +330,7 @@ TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node) {
     return root;
 }
 
+// Print the tree in order
 TreeNode *remove_tree_node(TreeNode *root, const char *name) {
     if (root == NULL) {
         return root;
@@ -378,14 +385,14 @@ int get_height(TreeNode *node) {
     return node->height;
 }
 
-int get_balance(TreeNode *node) {
+int get_balance(TreeNode *node) { // difference between left and right subtree
     if (node == NULL) {
         return 0;
     }
     return get_height(node->left) - get_height(node->right);
 }
 
-TreeNode *right_rotate(TreeNode *y) {
+TreeNode *right_rotate(TreeNode *y) { // right rotation
     TreeNode *x = y->left;
     TreeNode *T2 = x->right;
     x->right = y;
@@ -395,7 +402,7 @@ TreeNode *right_rotate(TreeNode *y) {
     return x;
 }
 
-TreeNode *left_rotate(TreeNode *x) {
+TreeNode *left_rotate(TreeNode *x) { // left rotation
     TreeNode *y = x->right;
     TreeNode *T2 = y->left;
     y->left = x;
@@ -405,7 +412,7 @@ TreeNode *left_rotate(TreeNode *x) {
     return y;
 }
 
-void print_tree(TreeNode *root) {
+void print_tree(TreeNode *root) { // print tree in order
     if (root == NULL) {
         return;
     }
@@ -414,7 +421,7 @@ void print_tree(TreeNode *root) {
     print_tree(root->right);
 }
 
-void free_tree(TreeNode *root) {
+void free_tree(TreeNode *root) { // free memory for tree
     if (root == NULL) {
         return;
     }
