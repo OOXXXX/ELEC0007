@@ -41,7 +41,7 @@ TreeNode *removeUserFromTree(TreeNode *node, const char *name);
 void insertUser(User **head, User *newUser) {
     User *current = *head;
     User *previous = NULL;
-
+    // Loop through the list until the end or until the new user is smaller than the current user
     while (current != NULL && strcmp(current->name, newUser->name) < 0) {
         previous = current;
         current = current->next;
