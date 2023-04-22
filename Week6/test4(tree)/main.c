@@ -19,13 +19,6 @@ struct TreeNode {
 };
 typedef struct TreeNode TreeNode;
 
-TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node);
-TreeNode *remove_tree_node(TreeNode *root, const char *name);
-int get_height(TreeNode *node);
-int get_balance(TreeNode *node);
-TreeNode *right_rotate(TreeNode *y);
-TreeNode *left_rotate(TreeNode *x);
-
 void insert_user(struct user **head, char name[]);
 void remove_user(struct user **head, char name[]);
 void insert_friend(struct user **head, char name[], char friend_name[]);
@@ -34,6 +27,13 @@ void save_to_file(struct user *head);
 void retrieve_from_file(struct user **head);
 void print_menu();
 void free_user(struct user *p);
+
+TreeNode *insert_tree_node(TreeNode *root, TreeNode *new_node);
+TreeNode *remove_tree_node(TreeNode *root, const char *name);
+int get_height(TreeNode *node);
+int get_balance(TreeNode *node);
+TreeNode *right_rotate(TreeNode *y);
+TreeNode *left_rotate(TreeNode *x);
 
 typedef enum { LINKED_LIST, BALANCED_BINARY_TREE } DataStructure;
 DataStructure selected_data_structure = LINKED_LIST; // Default data structure
